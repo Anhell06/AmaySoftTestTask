@@ -1,6 +1,7 @@
 ﻿using Assets.CodeBase.AssetLoader;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Assets.CodeBase.StaticData
 {
@@ -31,8 +32,10 @@ namespace Assets.CodeBase.StaticData
 
         private void LoadCell()
         {
-            Cell[] cells = _assetProvider.LoadAll<Cell>("NubersCell");
+            var cellCollections = _assetProvider.Load<CellColections>("Cell Colections").CellCollections;
+            Cell[] cells = cellCollections[Random.Range(0, cellCollections.Length)].Cells;
             Cells = cells.ToDictionary(x => x.Text);
+            Debug.Log(Cells.Count);
         }
 
         private void LoadLevel()

@@ -12,18 +12,16 @@ public class GameFactory : IGameFactory
     private const float OFFSET = .5f;
     private IStaticDataService _staticData;
     private IAssetProvider _assetProvider;
-    private IGameStateMachine _stateMachine;
     private GameObject _square;
     private List<GameObject> objPool = new List<GameObject>();
     private GameObject _trueCell;
 
     public GameObject TrueCell => _trueCell; 
 
-    public GameFactory(IStaticDataService staticData, IAssetProvider assetProvider, IGameStateMachine stateMachine)
+    public GameFactory(IStaticDataService staticData, IAssetProvider assetProvider)
     {
         _staticData = staticData;
         _assetProvider = assetProvider;
-        _stateMachine = stateMachine;
         _square = _assetProvider.Square;
     }
 
@@ -109,7 +107,6 @@ public class GameFactory : IGameFactory
         {
             var mediator = objPool[i].GetComponent<CellMediator>();
             mediator.UpdateSprite(cellsArray[i].Sprite, cellsArray[i].spriteRotation);
-            mediator.Init(_stateMachine);
             if (cellsArray[i].isTrue)
             {
                 _trueCell = objPool[i];

@@ -7,14 +7,12 @@ using UnityEngine.EventSystems;
 public class NextLevelTrigger : MonoBehaviour, IPointerClickHandler
 {
     private bool isTrue = false;
-    private IGameStateMachine _stateMachine;
     private CellMediator _mediator;
 
-    public bool IsTrue { get => isTrue; set => isTrue = value; }
+    public bool IsTrue { set => isTrue = value; }
 
-    public void Constract(CellMediator parent, IGameStateMachine stateMachine)
+    public void Constract(CellMediator parent)
     {
-        _stateMachine = stateMachine;
         _mediator = parent;
     }
 

@@ -9,7 +9,6 @@ public class CellMediator : MonoBehaviour
     private SpriteController _spriteController;
     private NextLevelTrigger _nextLevelTrigger;
     private SquareAnimator _squareAnimator;
-    private IGameStateMachine _stateMachine;
 
     public UnityAction LevelEnded;
 
@@ -21,7 +20,7 @@ public class CellMediator : MonoBehaviour
     }
     private void Start()
     {
-        _nextLevelTrigger.Constract(this, _stateMachine);
+        _nextLevelTrigger.Constract(this);
     }
     public void UpdateSprite(Sprite sprite, float spriteRotation) => _spriteController.UpdateSprite(sprite, spriteRotation);
     public void SetTrue() => _nextLevelTrigger.IsTrue = true;
@@ -29,8 +28,4 @@ public class CellMediator : MonoBehaviour
     public void PlayFalseAnimation() => _squareAnimator.PlayFalseAnimation();
     public void Bounce() => transform.DOScale(Vector3.one * 4, 2);
 
-    internal void Init(IGameStateMachine stateMachine)
-    {
-        _stateMachine = stateMachine;
-    }
 }
