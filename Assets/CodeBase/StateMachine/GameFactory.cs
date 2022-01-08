@@ -7,7 +7,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameFactory
+public class GameFactory : IGameFactory
 {
     private const float OFFSET = .5f;
     private IStaticDataService _staticData;
@@ -15,7 +15,9 @@ public class GameFactory
     private IGameStateMachine _stateMachine;
     private GameObject _square;
     private List<GameObject> objPool = new List<GameObject>();
-    private string UIText;
+    private GameObject _trueCell;
+
+    public GameObject TrueCell => _trueCell; 
 
     public GameFactory(IStaticDataService staticData, IAssetProvider assetProvider, IGameStateMachine stateMachine)
     {
@@ -110,8 +112,8 @@ public class GameFactory
             mediator.Init(_stateMachine);
             if (cellsArray[i].isTrue)
             {
+                _trueCell = objPool[i];
                 _staticData.MarkCellUsed(cellsArray[i]);
-                UIText = cellsArray[i].Text;
                 mediator.SetTrue();
             }
         }

@@ -16,10 +16,9 @@ namespace Assets.CodeBase.StateMachine
             _states = new Dictionary<Type, IExitableState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, service),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, 
-                new GameFactory(service.GetService<IStaticDataService>(), service.GetService<IAssetProvider>(), this),
-                service.GetService<IStaticDataService>())
-                //[typeof(GameLoopState)] = new GameLoopState()
+                [typeof(LoadLevelState)] = new LoadLevelState(this, service.GetService<IGameFactory>(),
+                service.GetService<IStaticDataService>()),
+                [typeof(GameLoopState)] = new GameLoopState(this, service.GetService<IGameFactory>())
             };
 
 

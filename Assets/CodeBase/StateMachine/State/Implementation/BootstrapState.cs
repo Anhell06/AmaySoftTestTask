@@ -22,6 +22,7 @@ namespace Assets.CodeBase.StateMachine.State
         {
             _services.RegestrateService<IAssetProvider>(new AssetProvider());
             _services.RegestrateService<IStaticDataService>(new StaticDataService(_services.GetService<IAssetProvider>()));
+            _services.RegestrateService<IGameFactory>(new GameFactory(_services.GetService<IStaticDataService>(), _services.GetService<IAssetProvider>(), _stateMachine));
         }
 
         public void Enter()

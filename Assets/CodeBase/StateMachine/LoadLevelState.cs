@@ -7,11 +7,11 @@ namespace Assets.CodeBase.StateMachine
 {
     public class LoadLevelState : IEnterInState
     {
-        private GameFactory _gameFactory;
+        private IGameFactory _gameFactory;
         private IGameStateMachine _stateMachine;
         private IStaticDataService _staticDataService;
 
-        public LoadLevelState(IGameStateMachine stateMachine, GameFactory gameFactory, IStaticDataService staticData)
+        public LoadLevelState(IGameStateMachine stateMachine, IGameFactory gameFactory, IStaticDataService staticData)
         {
             _stateMachine = stateMachine;
             _gameFactory = gameFactory;
@@ -21,11 +21,11 @@ namespace Assets.CodeBase.StateMachine
         public void Enter()
         {
             _gameFactory.CreateField(_staticDataService.GetCurrentLevel());
+            _stateMachine.Enter<GameLoopState>();
         }
 
         public void Exit()
         {
-            _gameFactory.ClearField();
             _staticDataService.SetNextLevel();
         }
     }
