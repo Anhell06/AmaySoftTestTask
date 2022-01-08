@@ -4,6 +4,9 @@ namespace Assets.CodeBase.AssetLoader
 {
     public class AssetProvider : IAssetProvider
     {
+        private const string Square = "Square";
+        private const string UItext = "UIText";
+        private const string Restart = "Restart";
         private GameObject _square;
         private GameObject _UIText;
         private GameObject _restartScreen;
@@ -13,9 +16,9 @@ namespace Assets.CodeBase.AssetLoader
 
         public AssetProvider()
         {
-            _square = Load<GameObject>("Square");
-            _UIText = GameObject.Find("UIText");
-            _restartScreen = GameObject.Find("Restart");
+            _square = Load<GameObject>(Square);
+            _UIText = GameObject.Find(UItext);
+            _restartScreen = GameObject.Find(Restart);
         }
 
         public TObject Load<TObject>(string path) where TObject : Object

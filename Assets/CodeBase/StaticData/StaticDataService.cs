@@ -7,6 +7,8 @@ namespace Assets.CodeBase.StaticData
 {
     public class StaticDataService : IStaticDataService
     {
+        private const string LevelData = "LevelData";
+        private const string CellCollection = "Cell Colections";
         private IAssetProvider _assetProvider;
         private int _currentLevel = 0;
         private List<Cell> _isBeenTrue = new List<Cell>();
@@ -32,14 +34,14 @@ namespace Assets.CodeBase.StaticData
 
         private void LoadCell()
         {
-            var cellCollections = _assetProvider.Load<CellColections>("Cell Colections").CellCollections;
+            var cellCollections = _assetProvider.Load<CellColections>(CellCollection).CellCollections;
             Cell[] cells = cellCollections[Random.Range(0, cellCollections.Length)].Cells;
             Cells = cells.ToDictionary(x => x.Text);
         }
 
         private void LoadLevel()
         {
-            FieldDatas = _assetProvider.Load<LevelsStaticData>("LevelData").GetLevelsStaticDatas();
+            FieldDatas = _assetProvider.Load<LevelsStaticData>(LevelData).GetLevelsStaticDatas();
             LevelCount = FieldDatas.Count;
         }
 
