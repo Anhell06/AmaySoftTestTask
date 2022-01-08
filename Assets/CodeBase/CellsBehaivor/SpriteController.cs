@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpriteController : MonoBehaviour
 {
-
     [SerializeField]
     private SpriteRenderer _spriteRenderer;
 

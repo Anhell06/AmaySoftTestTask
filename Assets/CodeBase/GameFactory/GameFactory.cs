@@ -1,7 +1,5 @@
 ﻿using Assets.CodeBase.AssetLoader;
-using Assets.CodeBase.StateMachine;
 using Assets.CodeBase.StaticData;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -16,7 +14,7 @@ public class GameFactory : IGameFactory
     private List<GameObject> objPool = new List<GameObject>();
     private GameObject _trueCell;
 
-    public GameObject TrueCell => _trueCell; 
+    public GameObject TrueCell => _trueCell;
 
     public GameFactory(IStaticDataService staticData, IAssetProvider assetProvider)
     {
@@ -76,7 +74,7 @@ public class GameFactory : IGameFactory
         objPool.Clear();
     }
 
-    public void FillCell()
+    private void FillCell()
     {
 
         Dictionary<string, Cell> cellsData = _staticData.Cells;

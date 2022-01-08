@@ -35,7 +35,6 @@ namespace Assets.CodeBase.StaticData
             var cellCollections = _assetProvider.Load<CellColections>("Cell Colections").CellCollections;
             Cell[] cells = cellCollections[Random.Range(0, cellCollections.Length)].Cells;
             Cells = cells.ToDictionary(x => x.Text);
-            Debug.Log(Cells.Count);
         }
 
         private void LoadLevel()

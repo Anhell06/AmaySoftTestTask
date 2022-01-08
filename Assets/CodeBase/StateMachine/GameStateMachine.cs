@@ -1,5 +1,4 @@
-﻿using Assets.CodeBase.AssetLoader;
-using Assets.CodeBase.Infracstructure;
+﻿using Assets.CodeBase.Infracstructure;
 using Assets.CodeBase.StateMachine.State;
 using Assets.CodeBase.StaticData;
 using System;
@@ -20,8 +19,6 @@ namespace Assets.CodeBase.StateMachine
                 service.GetService<IStaticDataService>()),
                 [typeof(GameLoopState)] = new GameLoopState(this, service.GetService<IGameFactory>())
             };
-
-
         }
         public void Enter<TState>() where TState : class, IEnterInState
         {

@@ -13,7 +13,7 @@ namespace Assets.CodeBase.AssetLoader
 
         public AssetProvider()
         {
-            _square =  Load<GameObject>("Square");
+            _square = Load<GameObject>("Square");
             _UIText = GameObject.Find("UIText");
             _restartScreen = GameObject.Find("Restart");
         }
